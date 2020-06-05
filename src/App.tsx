@@ -1,14 +1,12 @@
 import React from 'react';
 
 import { ThemeProvider } from 'ustudio-ui/theme';
-import { Wrapper } from './components/json-scheme-wrapper.component';
 
-import $RefParser from '@apidevtools/json-schema-ref-parser';
+import JsonSchemeParser from './json-scheme-parser';
+
 import { JSONSchema7 } from 'json-schema';
 
 const App = () => {
-  const [unrefereedSchema, setUnrefereedSchema] = React.useState({} as JSONSchema7);
-
   const schema = {
     id: '',
     $schema: 'http://json-schema.org/draft-04/schema#',
@@ -653,17 +651,9 @@ const App = () => {
     },
   };
 
-  React.useEffect(() => {
-    (async () => {
-      // @ts-ignore
-      const parsedSchema = await $RefParser.dereference(schema as JSONSchema7);
-      setUnrefereedSchema(parsedSchema as JSONSchema7);
-    })();
-  }, []);
-
   return (
     <ThemeProvider>
-      <Wrapper schema={unrefereedSchema} title="Category version" />
+      <JsonSchemeParser schema={schema as JSONSchema7} title="Category version" />
     </ThemeProvider>
   );
 };
