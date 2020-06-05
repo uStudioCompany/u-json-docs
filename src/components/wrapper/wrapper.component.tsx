@@ -21,7 +21,7 @@ export const Wrapper: FC<{ schema: JSONSchema7; title?: string; required?: boole
 
   return (
     <Flex margin={{ left: 'regular' }}>
-      <PrimitiveNode schema={schema} title={title} required={required} />
+      <PrimitiveNode schema={schema} title={title} required={required} parent="primitive" />
     </Flex>
   );
 };

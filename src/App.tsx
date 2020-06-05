@@ -7,7 +7,7 @@ import JsonSchemeParser from './json-scheme-parser';
 import { JSONSchema7 } from 'json-schema';
 
 const App = () => {
-  const schema = {
+  const schema: JSONSchema7 = {
     id: '',
     $schema: 'http://json-schema.org/draft-04/schema#',
     title: 'Schema for a Category Version',
@@ -409,7 +409,6 @@ const App = () => {
             title: 'Related scheme element',
             description: 'The scheme element that the group applies',
             type: 'string',
-            openCodelist: 'true',
             enum: ['value'],
           },
           options: {
@@ -653,7 +652,7 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <JsonSchemeParser schema={schema as JSONSchema7} title="Category version" />
+      <JsonSchemeParser schema={schema} title="Category version" />
     </ThemeProvider>
   );
 };
