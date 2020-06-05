@@ -1,7 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'regenerator-runtime/runtime';
+import React, { FC, useState, useEffect } from 'react';
 
-import App from './App';
+import { ThemeProvider } from 'ustudio-ui/theme';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Wrapper } from './components';
+
+import $RefParser from '@apidevtools/json-schema-ref-parser';
+import { JSONSchema7 } from 'json-schema';
+
+const Index: FC<{ schema: JSONSchema7; title?: string }> = ({ schema, title }) => {
+  const [unrefereedSchema, setUnrefereedSchema] = useState({} as JSONSchema7);
+
+  useEffect(() => {
+    (async () => {
+      // @ts-ignore
+      const parsedSchema = await $RefParser.dereference(schema as JSONSchema7);
+      setUnrefereedSchema(parsedSchema as JSONSchema7);
+    })();
+  }, []);
+
+  return (
+    <ThemeProvider>
+      <Wrapper schema={unrefereedSchema} title={title} />
+    </ThemeProvider>
+  );
+};
+
+export default Index;

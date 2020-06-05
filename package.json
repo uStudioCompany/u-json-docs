@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "rm -fr ./.cache && parcel public/index.html",
-    "build": "rm -fr ./.cache && parcel build public/index.html ‑‑no‑cache"
+    "build": "rm -fr ./.cache && parcel src/index.tsx --out-dir ./lib ‑‑no‑cache"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",
