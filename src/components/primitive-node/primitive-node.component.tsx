@@ -13,7 +13,7 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
 }) => {
   const getType = () => {
     if (Array.isArray(schema.type)) {
-      return schema.type.join(' | ');
+      return schema.type.map((type) => JSON.stringify(type, null, 2)).join(' | ');
     }
 
     if (parent === 'array' && schema.items && !Array.isArray(schema.items) && typeof schema.items !== 'boolean') {
@@ -22,17 +22,20 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
 
     return schema.type;
   };
+
   return (
     <Styled.Node padding={{ top: 'medium', bottom: 'medium' }} alignment={{ horizontal: 'space-between' }}>
       <Flex>
         <Styled.KeyName>
           <Text appearance="bold">{title}</Text>
+
           {required && (
             <Styled.Tag>
               <Styled.TagText>required</Styled.TagText>
             </Styled.Tag>
           )}
         </Styled.KeyName>
+
         <Flex direction="column">
           <Styled.SchemaTitle variant="small">{schema.title}</Styled.SchemaTitle>
 
@@ -70,6 +73,7 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
           {schema.writeOnly && <Property title="writeOnly" value="Yes" />}
         </Flex>
       </Flex>
+
       <Styled.Type isInline marginRight={parent === 'primitive' ? '58px' : 'var(--i-regular)'}>
         <Text variant="small" color="var(--c-primary)">
           {getType()}

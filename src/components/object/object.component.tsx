@@ -10,9 +10,10 @@ export const ObjectComponent: FC<{ schema: JSONSchema7; title?: string; required
   required,
 }) => (
   <Dropdown title={<PrimitiveNode schema={schema} title={title} required={required} />}>
-    <div>
+    <>
       <Flex margin={{ bottom: 'regular' }}>
         {schema.maxProperties && <Property title="maxProperties" value={schema.maxProperties} />}
+
         {schema.minProperties && <Property title="minProperties" value={schema.minProperties} />}
       </Flex>
 
@@ -35,6 +36,6 @@ export const ObjectComponent: FC<{ schema: JSONSchema7; title?: string; required
             title={prop[0]}
           />
         ))}
-    </div>
+    </>
   </Dropdown>
 );

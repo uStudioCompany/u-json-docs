@@ -19,11 +19,6 @@ const Tag = styled.div`
   color: var(--c-negative);
 `;
 
-const KeyName = styled(Flex)`
-  width: 300px;
-  }
-`;
-
 const Node = styled(Flex)`
   &:hover {
     ${Tag} {
@@ -34,6 +29,10 @@ const Node = styled(Flex)`
       padding: 0 var(--i-small);
     }
   }
+`;
+
+const KeyName = styled(Flex)`
+  width: 300px;
 `;
 
 const Type = styled(Flex)(
