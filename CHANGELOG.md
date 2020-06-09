@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/uStudioCompany/u-json-docs/compare/v0.0.6...v0.0.7) (2020-06-09)
+
+
+### Bug Fixes
+
+* Fix package publication ([34e0fc6](https://github.com/uStudioCompany/u-json-docs/commit/34e0fc6fb21d05f03e08426abfefe258b37cb01d))
+
 ### [0.0.6](https://github.com/uStudioCompany/u-json-docs/compare/v0.0.5...v0.0.6) (2020-06-09)
 
 ### [0.0.5](https://github.com/uStudioCompany/u-json-docs/compare/v0.0.4...v0.0.5) (2020-06-09)
