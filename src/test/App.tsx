@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ThemeProvider } from 'ustudio-ui/theme';
 
-import { JsonSchemeParser } from './../components';
+import JsonSchemeParser from './../components/json-docs';
 
 import { JSONSchema7 } from 'json-schema';
 
@@ -111,6 +111,7 @@ const App = () => {
             description:
               'Classification should be drawn from an existing scheme or list of codes. This field is used to indicate the scheme/codelist from which the classification is drawn.',
             type: ['string', 'null'],
+            //@ts-ignore
             codelist: 'https://simap.ted.europa.eu/web/simap/cpv',
           },
           id: {
@@ -185,6 +186,7 @@ const App = () => {
             description:
               'The schema element that the conversion applies. For example, the conversion may be defined against a requirement or against a metric.',
             type: 'string',
+            //@ts-ignore
             openCodelist: false,
             enum: ['requirement'],
           },
@@ -304,6 +306,7 @@ const App = () => {
             description:
               'A classification of the document described, using the open [documentType](https://standard.open-contracting.org/{{version}}/{{lang}}/schema/codelists/#document-type) codelist.',
             type: ['string', 'null'],
+            //@ts-ignore
             codelist: 'documentType.csv',
             openCodelist: true,
           },
