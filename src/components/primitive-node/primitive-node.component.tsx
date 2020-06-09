@@ -27,7 +27,7 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
     <Styled.Node padding={{ top: 'medium', bottom: 'medium' }} alignment={{ horizontal: 'space-between' }}>
       <Flex>
         <Styled.KeyName>
-          <Text appearance="bold">{title}</Text>
+          {title && <Text appearance="bold">{title}</Text>}
 
           {required && (
             <Styled.Tag>
@@ -37,9 +37,9 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
         </Styled.KeyName>
 
         <Flex direction="column">
-          <Styled.SchemaTitle variant="small">{schema.title}</Styled.SchemaTitle>
+          {schema.title && <Styled.SchemaTitle variant="small">{schema.title}</Styled.SchemaTitle>}
 
-          <Text variant="small"> {schema.description}</Text>
+          {schema.description && <Text variant="small"> {schema.description}</Text>}
           {schema.enum && (
             <Property title="enum" value={schema.enum.map((el) => JSON.stringify(el, null, 2)).join(' | ')} />
           )}
@@ -74,11 +74,13 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
         </Flex>
       </Flex>
 
-      <Styled.Type isInline marginRight={parent === 'primitive' ? '58px' : 'var(--i-regular)'}>
-        <Text variant="small" color="var(--c-primary)">
-          {getType()}
-        </Text>
-      </Styled.Type>
+      {schema.type && (
+        <Styled.Type isInline marginRight={parent === 'primitive' ? '58px' : 'var(--i-regular)'}>
+          <Text variant="small" color="var(--c-primary)">
+            {getType()}
+          </Text>
+        </Styled.Type>
+      )}
     </Styled.Node>
   );
 };

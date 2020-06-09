@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { Dropdown, Text, Flex } from 'ustudio-ui';
 import { JSONSchema7 } from 'json-schema';
 
-import { Wrapper } from './../wrapper';
-import { PrimitiveNode } from './../primitive-node';
-import { Property } from './../property';
+import { Wrapper } from '../wrapper';
+import { PrimitiveNode } from '../primitive-node';
+import { Property } from '../property';
 
 export const ArrayComponent: FC<{ schema: JSONSchema7; title?: string; required?: boolean }> = ({
   schema,
@@ -40,9 +40,9 @@ export const ArrayComponent: FC<{ schema: JSONSchema7; title?: string; required?
     <Dropdown title={<PrimitiveNode parent="array" schema={schema} required={required} title={title} />}>
       <>
         <Flex direction="column" margin={{ left: 'regular', bottom: 'regular' }}>
-          <Text variant="h5">{items.title}</Text>
+          {items.title && <Text variant="h5">{items?.title}</Text>}
 
-          <Text color="var(--c-dark)">{items.description}</Text>
+          {items.description && <Text color="var(--c-dark)">{items?.description}</Text>}
 
           {schema.maxItems && <Property title="maxItems" value={schema.maxItems} />}
 
