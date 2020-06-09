@@ -38,6 +38,17 @@ const App = () => {
       lots: {
         type: "array",
         minItems: 1,
+        items: {
+          type: 'object',
+          properties:{
+            id: {
+              type: 'string'
+            },
+            title: {
+              type: 'string'
+            }
+          }
+        }
 
       },
       items: {

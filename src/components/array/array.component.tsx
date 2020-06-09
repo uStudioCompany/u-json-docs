@@ -7,10 +7,10 @@ import { PrimitiveNode } from './../primitive-node';
 import { Property } from './../property';
 
 export const ArrayComponent: FC<{ schema: JSONSchema7; title?: string; required?: boolean }> = ({
-  schema,
-  title,
-  required,
-}) => {
+                                                                                                  schema,
+                                                                                                  title,
+                                                                                                  required,
+                                                                                                }) => {
   const items = schema.items as JSONSchema7;
 
   const DropdownContent = () => {
@@ -37,21 +37,21 @@ export const ArrayComponent: FC<{ schema: JSONSchema7; title?: string; required?
   };
 
   return (
-    <Dropdown title={<PrimitiveNode parent="array" schema={schema} required={required} title={title} />}>
+    <Dropdown title={<PrimitiveNode parent="array" schema={schema} required={required} title={title}/>}>
       <>
         <Flex direction="column" margin={{ left: 'regular', bottom: 'regular' }}>
-          <Text variant="h5">{items.title}</Text>
+          {items.title && <Text variant="h5">{items?.title}</Text>}
 
-          <Text color="var(--c-dark)">{items.description}</Text>
+          {items.description && <Text color="var(--c-dark)">{items?.description}</Text>}
 
-          {schema.maxItems && <Property title="maxItems" value={schema.maxItems} />}
+          {schema.maxItems && <Property title="maxItems" value={schema.maxItems}/>}
 
-          {schema.minItems && <Property title="minItems" value={schema.minItems} />}
+          {schema.minItems && <Property title="minItems" value={schema.minItems}/>}
 
-          {schema.uniqueItems && <Property title="uniqueItems" value="Yes" />}
+          {schema.uniqueItems && <Property title="uniqueItems" value="Yes"/>}
         </Flex>
 
-        <DropdownContent />
+        <DropdownContent/>
       </>
     </Dropdown>
   );
