@@ -2,7 +2,9 @@ import React, { FC } from 'react';
 import { Dropdown, Flex } from 'ustudio-ui';
 import { JSONSchema7 } from 'json-schema';
 
-import { Wrapper, PrimitiveNode, Property } from './../../components';
+import { Wrapper } from './../wrapper';
+import { PrimitiveNode } from './../primitive-node';
+import { Property } from './../property';
 
 export const ObjectComponent: FC<{ schema: JSONSchema7; title?: string; required?: boolean }> = ({
   schema,

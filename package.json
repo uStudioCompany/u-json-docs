@@ -7,8 +7,12 @@
     "url": "https://github.com/uStudioCompany/u-json-docs.git"
   },
   "scripts": {
-    "dev": "rm -fr ./.cache && parcel public/index.html",
-    "build": "rm -fr ./.cache && parcel src/index.tsx --out-dir ./lib ‑‑no‑cache"
+    "dev": "parcel src/test/index.html --no-cache",
+    "clean": "rimraf lib",
+    "build:components": "rm -fr ./.cache && parcel src/index.tsx --out-dir ./lib ‑‑no‑cache",
+    "build:copy": "copyfiles README.md LICENSE package.json lib",
+    "build": "npm-run-all clean -p build:components build:copy",
+    "publication": "yarn build && yarn publish lib"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",

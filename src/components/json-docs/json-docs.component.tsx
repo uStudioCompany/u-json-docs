@@ -2,12 +2,12 @@ import React, { FC, useState, useEffect } from 'react';
 
 import { ThemeProvider } from 'ustudio-ui/theme';
 
-import { Wrapper } from './components';
+import { Wrapper } from './../wrapper';
 
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 import { JSONSchema7 } from 'json-schema';
 
-const Index: FC<{ schema: JSONSchema7; title?: string }> = ({ schema, title }) => {
+export const JsonSchemeParser: FC<{ schema: JSONSchema7; title?: string }> = ({ schema, title }) => {
   const [unrefereedSchema, setUnrefereedSchema] = useState({} as JSONSchema7);
 
   useEffect(() => {
@@ -24,5 +24,3 @@ const Index: FC<{ schema: JSONSchema7; title?: string }> = ({ schema, title }) =
     </ThemeProvider>
   );
 };
-
-export default Index;
