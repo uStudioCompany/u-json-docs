@@ -6,13 +6,12 @@ import $RefParser from '@apidevtools/json-schema-ref-parser';
 
 import { JSONSchema7 } from 'json-schema';
 
-import { Wrapper } from './../wrapper';
+import { Wrapper } from '../wrapper';
 import { JsonDocs } from './json-docs.type';
-
-const JsonSchemeParser: FC<JsonDocs> = ({ schema, title }) => {
 import { ErrorBoundaryComponent } from '../error-boundary';
 
-export const JsonSchemeParser: FC<{ schema: JSONSchema7; title?: string }> = ({ schema, title }) => {
+
+const JsonSchemeParser: FC<JsonDocs> = ({ schema, title }) => {
   const [unrefereedSchema, setUnrefereedSchema] = useState({} as JSONSchema7);
 
   useEffect(() => {
