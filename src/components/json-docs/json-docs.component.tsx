@@ -2,11 +2,14 @@ import React, { FC, useState, useEffect } from 'react';
 
 import { ThemeProvider } from 'ustudio-ui/theme';
 
-import { Wrapper } from './../wrapper';
-
 import $RefParser from '@apidevtools/json-schema-ref-parser';
+
 import { JSONSchema7 } from 'json-schema';
 
+import { Wrapper } from './../wrapper';
+import { JsonDocs } from './json-docs.type';
+
+const JsonSchemeParser: FC<JsonDocs> = ({ schema, title }) => {
 import { ErrorBoundaryComponent } from '../error-boundary';
 
 export const JsonSchemeParser: FC<{ schema: JSONSchema7; title?: string }> = ({ schema, title }) => {
@@ -28,3 +31,5 @@ export const JsonSchemeParser: FC<{ schema: JSONSchema7; title?: string }> = ({ 
     </ThemeProvider>
   );
 };
+
+export default JsonSchemeParser;
