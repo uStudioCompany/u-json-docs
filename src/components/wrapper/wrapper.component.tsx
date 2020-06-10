@@ -4,9 +4,9 @@ import { JSONSchema7 } from 'json-schema';
 
 import Flex from 'ustudio-ui/components/Flex';
 
-import { ObjectComponent } from './../object';
-import { PrimitiveNode } from './../primitive-node';
-import { ArrayComponent } from './../array';
+import { ObjectComponent } from '../object';
+import { PrimitiveNode } from '../primitive-node';
+import { ArrayComponent } from '../array';
 
 export const Wrapper: FC<{ schema: JSONSchema7; title?: string; required?: boolean }> = ({
   schema,

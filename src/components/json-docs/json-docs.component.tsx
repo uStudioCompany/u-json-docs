@@ -8,7 +8,7 @@ import { JSONSchema7 } from 'json-schema';
 
 import { Wrapper } from '../wrapper';
 import { JsonDocs } from './json-docs.type';
-import { ErrorBoundaryComponent } from '../error-boundary';
+import { ErrorBoundary } from '../error-boundary';
 
 export const JsonSchemaParser: FC<JsonDocs> = ({ schema, title }) => {
   const [unrefereedSchema, setUnrefereedSchema] = useState({} as JSONSchema7);
@@ -24,9 +24,9 @@ export const JsonSchemaParser: FC<JsonDocs> = ({ schema, title }) => {
 
   return (
     <ThemeProvider>
-      <ErrorBoundaryComponent>
+      <ErrorBoundary>
         <Wrapper schema={unrefereedSchema} title={title} />
-      </ErrorBoundaryComponent>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 };

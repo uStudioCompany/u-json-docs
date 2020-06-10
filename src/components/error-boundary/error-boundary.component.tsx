@@ -4,7 +4,7 @@ import { ErrorComponent } from '../error';
 
 import { Props, State } from './error-boundary.types';
 
-export class ErrorBoundaryComponent extends React.Component<Props, State> {
+export class ErrorBoundary extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { error: null };

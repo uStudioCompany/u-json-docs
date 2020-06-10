@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import { Flex, Text } from 'ustudio-ui';
 import { JSONSchema7 } from 'json-schema';
 
@@ -40,6 +41,7 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
           {schema.title && <Styled.SchemaTitle variant="small">{schema.title}</Styled.SchemaTitle>}
 
           {schema.description && <Text variant="small"> {schema.description}</Text>}
+
           {schema.enum && (
             <Property title="enum" value={schema.enum.map((el) => JSON.stringify(el, null, 2)).join(' | ')} />
           )}
