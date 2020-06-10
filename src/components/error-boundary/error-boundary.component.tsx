@@ -20,6 +20,6 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
     const { error } = this.state;
     const { children } = this.props;
 
-    return error ? <ErrorComponent error={error} /> : children;
+    return error ? <ErrorComponent /> : children;
   }
 }

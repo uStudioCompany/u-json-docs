@@ -2,15 +2,16 @@ import React from 'react';
 import Text from 'ustudio-ui/components/Text';
 import Flex from 'ustudio-ui/components/Flex';
 
-type ErrorType = {
-  error: Error;
-};
-
-export const ErrorComponent = ({ error }: ErrorType) => {
+export const ErrorComponent = () => {
   return (
     <Flex alignment={{ horizontal: 'center', vertical: 'center' }} direction="column">
-      <Text color="var(--c-negative)">Something went wrong: </Text>
-      <Text color="var(--c-negative)"> {error.message}</Text>
+      <Text color="var(--c-negative)">Invalid json schema </Text>
+      <Text color="var(--c-dark)" variant="small">
+        if you are sure, that scheme is valid, please,
+        <a rel="noreferrer" target="_blank" href="https://github.com/uStudioCompany/u-json-docs/issues">
+          create an issue
+        </a>
+      </Text>
     </Flex>
   );
 };

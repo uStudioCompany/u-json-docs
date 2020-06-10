@@ -13,7 +13,7 @@ yarn add u-json-docs
 You just need import tool and use it with your json schema
 
 ```jsx
-import { JsonParser } from 'u-json-docs';
+import { JsonSchemaParser } from 'u-json-docs';
 
 <JsonParser schema={schema} title="My amazing schema" />;
 ```

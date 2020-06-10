@@ -1,1 +1,1 @@
-export { default as JsonDocs } from './components/json-docs';
+export * from "./components"

@@ -2,9 +2,9 @@ import React from 'react';
 
 import { ThemeProvider } from 'ustudio-ui/theme';
 
-import JsonSchemeParser from './../components/json-docs';
-
 import { JSONSchema7 } from 'json-schema';
+
+import { JsonSchemaParser } from '../components/json-docs';
 
 const App = () => {
   const schema: JSONSchema7 = {
@@ -655,7 +655,7 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <JsonSchemeParser schema={schema} title="Category version" />
+      <JsonSchemaParser schema={schema} title="Category version" />
     </ThemeProvider>
   );
 };

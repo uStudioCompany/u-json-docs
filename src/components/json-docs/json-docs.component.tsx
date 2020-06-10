@@ -10,11 +10,12 @@ import { Wrapper } from '../wrapper';
 import { JsonDocs } from './json-docs.type';
 import { ErrorBoundaryComponent } from '../error-boundary';
 
-const JsonSchemeParser: FC<JsonDocs> = ({ schema, title }) => {
+export const JsonSchemaParser: FC<JsonDocs> = ({ schema, title }) => {
   const [unrefereedSchema, setUnrefereedSchema] = useState({} as JSONSchema7);
 
   useEffect(() => {
     (async () => {
+      // refparser don't work with 7 draft of json-scheme
       // @ts-ignore
       const parsedSchema = await $RefParser.dereference(schema as JSONSchema7);
       setUnrefereedSchema(parsedSchema as JSONSchema7);
@@ -29,5 +30,3 @@ const JsonSchemeParser: FC<JsonDocs> = ({ schema, title }) => {
     </ThemeProvider>
   );
 };
-
-export default JsonSchemeParser;
