@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Dropdown, Flex } from 'ustudio-ui';
+import Dropdown from 'ustudio-ui/components/Dropdown';
+import Flex from 'ustudio-ui/components/Flex';
 import { JSONSchema7 } from 'json-schema';
 
 import { Wrapper } from '../wrapper';

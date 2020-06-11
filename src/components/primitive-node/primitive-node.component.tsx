@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import { Flex, Text } from 'ustudio-ui';
+import Text from 'ustudio-ui/components/Text';
+import Flex from 'ustudio-ui/components/Flex';
 import { JSONSchema7 } from 'json-schema';
 
 import Styled from './primitive-node.styles';
