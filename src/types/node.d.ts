@@ -1,6 +1,6 @@
 import { JSONSchema7 } from 'json-schema';
 
-export interface Types {
+export interface Node {
   schema: JSONSchema7;
   title?: string;
   required?: boolean;

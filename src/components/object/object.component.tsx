@@ -6,9 +6,9 @@ import { JSONSchema7 } from 'json-schema';
 import { Wrapper } from '../wrapper';
 import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
-import { Types } from '../../types';
+import { Node } from '../../types'
 
-export const ObjectComponent: FC<Types> = ({schema, title, required}) => {
+export const ObjectComponent: FC<Node> = ({schema, title, required}) => {
   const arrayOfProperty = ['maxProperties', 'minProperties'];
   return (
     <Dropdown title={<PrimitiveNode schema={schema} title={title} required={required} />}>
