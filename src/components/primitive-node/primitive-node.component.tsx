@@ -9,23 +9,14 @@ import Styled from './primitive-node.styles';
 import { Property } from '../property';
 import type { Node } from '../../types';
 
+import { parseSchemaType } from './primitive-node.module';
+
 export const PrimitiveNode: FC<Node> = ({
   schema,
   title,
   parent,
   required,
 }) => {
-  const getType = () => {
-    if (Array.isArray(schema.type)) {
-      return schema.type.map((type) => JSON.stringify(type, null, 2)).join(' | ');
-    }
-
-    if (parent === 'array' && schema.items && !Array.isArray(schema.items) && typeof schema.items !== 'boolean') {
-      return `array[${schema?.items?.title || schema?.items?.type}]`;
-    }
-
-    return schema.type;
-  };
 
   const primitiveProperties: (keyof JSONSchema7)[] = ['const', 'default', 'examples', 'multipleOf', 'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength', 'pattern', 'format', 'readOnly', 'writeOnly' ];
 
@@ -61,7 +52,7 @@ export const PrimitiveNode: FC<Node> = ({
       {schema.type && (
         <Styled.Type isInline marginRight={parent === 'primitive' ? '58px' : 'var(--i-regular)'}>
           <Text variant="small" color="var(--c-primary)">
-            {getType()}
+            {parseSchemaType(schema, parent)}
           </Text>
         </Styled.Type>
       )}
