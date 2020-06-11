@@ -7,11 +7,11 @@ import { JSONSchema7 } from 'json-schema';
 import { Wrapper } from '../wrapper';
 import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
-import { Types } from '../../types';
+import { Node } from '../../types';
 
-export const ArrayComponent: FC<Types> = ({schema, title, required}) => {
+export const ArrayComponent: FC<Node> = ({ schema, title, required }) => {
   const items = schema.items as JSONSchema7;
-  const arrayOfProperty = ['maxItems', 'minItems', 'uniqueItems'];
+  const arrayProperties = ['maxItems', 'minItems', 'uniqueItems'];
 
   const DropdownContent = () => {
     if (items?.type === 'object' && items.properties) {
@@ -44,7 +44,7 @@ export const ArrayComponent: FC<Types> = ({schema, title, required}) => {
 
           {items.description && <Text color="var(--c-dark)">{items?.description}</Text>}
 
-          {arrayOfProperty.map((item) => {
+          {arrayProperties.map((item) => {
             // @ts-ignore
             const property = schema?.[item];
             return property && <Property title={item} value={property} />;

@@ -2,11 +2,12 @@ import React, { FC } from 'react';
 
 import Text from 'ustudio-ui/components/Text';
 import Flex from 'ustudio-ui/components/Flex';
+
 import { JSONSchema7 } from 'json-schema';
 
 import Styled from './primitive-node.styles';
 import { Property } from '../property';
-import { Node } from '../../types'
+import { Node } from '../../types';
 
 export const PrimitiveNode: FC<Node> = ({
   schema,
@@ -26,7 +27,7 @@ export const PrimitiveNode: FC<Node> = ({
     return schema.type;
   };
 
-  const array: (keyof JSONSchema7)[] = ['const', 'default', 'examples', 'multipleOf', 'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength', 'pattern', 'format', 'readOnly', 'writeOnly' ];
+  const primitiveProperties: (keyof JSONSchema7)[] = ['const', 'default', 'examples', 'multipleOf', 'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength', 'pattern', 'format', 'readOnly', 'writeOnly' ];
 
   return (
     <Styled.Node padding={{ top: 'medium', bottom: 'medium' }} alignment={{ horizontal: 'space-between' }}>
@@ -50,11 +51,10 @@ export const PrimitiveNode: FC<Node> = ({
             <Property title="enum" value={schema.enum.map((el) => JSON.stringify(el, null, 2)).join(' | ')} />
           )}
 
-          {array.map((item) => {
+          {primitiveProperties.map((item) => {
             const property = schema?.[item];
             return property && <Property title={item} value={JSON.stringify(property, null, 2)} />;
           })}
-
         </Flex>
       </Flex>
 

@@ -1,20 +1,22 @@
 import React, { FC } from 'react';
+
 import Dropdown from 'ustudio-ui/components/Dropdown';
 import Flex from 'ustudio-ui/components/Flex';
+
 import { JSONSchema7 } from 'json-schema';
 
 import { Wrapper } from '../wrapper';
 import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
-import { Node } from '../../types'
+import { Node } from '../../types';
 
-export const ObjectComponent: FC<Node> = ({schema, title, required}) => {
-  const arrayOfProperty = ['maxProperties', 'minProperties'];
+export const ObjectComponent: FC<Node> = ({ schema, title, required }) => {
+  const objectProperties = ['maxProperties', 'minProperties'];
   return (
     <Dropdown title={<PrimitiveNode schema={schema} title={title} required={required} />}>
       <>
         <Flex margin={{ bottom: 'regular' }}>
-          {arrayOfProperty.map((item) => {
+          {objectProperties.map((item) => {
             // @ts-ignore
             const property = schema?.[item];
             return property && <Property title={item} value={property} />;
@@ -43,4 +45,4 @@ export const ObjectComponent: FC<Node> = ({schema, title, required}) => {
       </>
     </Dropdown>
   );
-}
+};
