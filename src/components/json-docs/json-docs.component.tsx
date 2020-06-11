@@ -7,12 +7,12 @@ import $RefParser from '@apidevtools/json-schema-ref-parser';
 import { JSONSchema7 } from 'json-schema';
 
 import { Wrapper } from '../wrapper';
-import { JsonDocs } from './json-docs.type';
+import { JsonDocs } from './json-docs.types';
 import { ErrorBoundary } from '../error-boundary';
 import { ErrorComponent } from '../error';
 
 export const JsonSchemaParser: FC<JsonDocs> = ({ schema, title }) => {
-  const [unrefereedSchema, setUnrefereedSchema] = useState({} as JSONSchema7);
+  const [unreferredSchema, setUnreferredSchema] = useState({} as JSONSchema7);
   const [parsingError, setParsingError] = useState(false);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const JsonSchemaParser: FC<JsonDocs> = ({ schema, title }) => {
         // refparser don't work with 7 draft of json-scheme
         // @ts-ignore
         const parsedSchema = await $RefParser.dereference(schema);
-        setUnrefereedSchema(parsedSchema as JSONSchema7);
+        setUnreferredSchema(parsedSchema as JSONSchema7);
       } catch (e) {
         setParsingError(true);
       }
@@ -32,7 +32,7 @@ export const JsonSchemaParser: FC<JsonDocs> = ({ schema, title }) => {
   return (
     <ThemeProvider>
       <ErrorBoundary>
-        {parsingError ? <ErrorComponent /> : <Wrapper schema={unrefereedSchema} title={title} />}
+        {parsingError ? <ErrorComponent /> : <Wrapper schema={unreferredSchema} title={title} />}
       </ErrorBoundary>
     </ThemeProvider>
   );
