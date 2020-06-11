@@ -24,6 +24,8 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
     return schema.type;
   };
 
+  const array: (keyof JSONSchema7)[] = ['const', 'default', 'examples', 'multipleOf', 'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength', 'pattern', 'format', 'readOnly', 'writeOnly' ];
+
   return (
     <Styled.Node padding={{ top: 'medium', bottom: 'medium' }} alignment={{ horizontal: 'space-between' }}>
       <Flex>
@@ -46,33 +48,11 @@ export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?:
             <Property title="enum" value={schema.enum.map((el) => JSON.stringify(el, null, 2)).join(' | ')} />
           )}
 
-          {schema.const && <Property title="const" value={JSON.stringify(schema.const, null, 2)} />}
+          {array.map((item) => {
+            const property = schema?.[item];
+            return property && <Property title={item} value={JSON.stringify(property, null, 2)} />;
+          })}
 
-          {schema.default && <Property title="default" value={JSON.stringify(schema.default, null, 2)} />}
-
-          {schema.examples && <Property title="examples" value={JSON.stringify(schema.examples, null, 2)} />}
-
-          {schema.multipleOf && <Property title="multiple of" value={schema.multipleOf} />}
-
-          {schema.maximum && <Property title="maximum" value={schema.maximum} />}
-
-          {schema.exclusiveMaximum && <Property title="exclusive maximum" value={schema.exclusiveMaximum} />}
-
-          {schema.minimum && <Property title="minimum" value={schema.minimum} />}
-
-          {schema.exclusiveMinimum && <Property title="exclusive minimum" value={schema.exclusiveMinimum} />}
-
-          {schema.maxLength && <Property title="max length" value={schema.maxLength} />}
-
-          {schema.minLength && <Property title="min length" value={schema.minLength} />}
-
-          {schema.pattern && <Property title="pattern" value={schema.pattern} />}
-
-          {schema.format && <Property title="format" value={schema.format} />}
-
-          {schema.readOnly && <Property title="readOnly" value="Yes" />}
-
-          {schema.writeOnly && <Property title="writeOnly" value="Yes" />}
         </Flex>
       </Flex>
 
