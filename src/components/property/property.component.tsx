@@ -5,6 +5,6 @@ export const Property: FC<{ title: string; value: string | number }> = ({ title,
   <Flex alignment={{ vertical: 'center' }}>
     <Text variant="small">{title}:&nbsp;</Text>
 
-    <Text variant="code"> {value}</Text>
+    <Text variant="code">{value}</Text>
   </Flex>
 );

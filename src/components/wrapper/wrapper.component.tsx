@@ -13,17 +13,16 @@ export const Wrapper: FC<{ schema: JSONSchema7; title?: string; required?: boole
   title,
   required,
 }) => {
-  if (schema.type === 'object') {
-    return <ObjectComponent schema={schema} required={required} title={title} />;
+  switch (schema.type) {
+    case 'object':
+      return <ObjectComponent schema={schema} title={title} required={required} />;
+    case 'array':
+      return <ArrayComponent schema={schema} title={title} required={required} />;
+    default:
+      return (
+        <Flex margin={{ left: 'regular' }}>
+          <PrimitiveNode schema={schema} title={title} required={required} parent="primitive" />
+        </Flex>
+      );
   }
-
-  if (schema.type === 'array') {
-    return <ArrayComponent schema={schema} title={title} required={required} />;
-  }
-
-  return (
-    <Flex margin={{ left: 'regular' }}>
-      <PrimitiveNode schema={schema} title={title} required={required} parent="primitive" />
-    </Flex>
-  );
 };
