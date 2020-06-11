@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 
-import { JSONSchema7 } from 'json-schema';
-
 import Flex from 'ustudio-ui/components/Flex';
 
 import { ObjectComponent } from '../object';
 import { PrimitiveNode } from '../primitive-node';
 import { ArrayComponent } from '../array';
+import { Types } from '../../types';
 
-export const Wrapper: FC<{ schema: JSONSchema7; title?: string; required?: boolean }> = ({
+export const Wrapper: FC<Types> = ({
   schema,
   title,
   required,

@@ -6,8 +6,9 @@ import { JSONSchema7 } from 'json-schema';
 
 import Styled from './primitive-node.styles';
 import { Property } from '../property';
+import { Types } from '../../types';
 
-export const PrimitiveNode: FC<{ schema: JSONSchema7; title?: string; required?: boolean; parent?: string }> = ({
+export const PrimitiveNode: FC<Types> = ({
   schema,
   title,
   parent,

@@ -6,8 +6,9 @@ import { JSONSchema7 } from 'json-schema';
 import { Wrapper } from '../wrapper';
 import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
+import { Types } from '../../types';
 
-export const ObjectComponent: FC<{ schema: JSONSchema7; title?: string; required?: boolean }> = ({
+export const ObjectComponent: FC<Types> = ({
   schema,
   title,
   required,
