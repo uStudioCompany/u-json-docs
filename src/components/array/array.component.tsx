@@ -9,12 +9,9 @@ import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
 import { Types } from '../../types';
 
-export const ArrayComponent: FC<Types> = ({
-  schema,
-  title,
-  required,
-}) => {
+export const ArrayComponent: FC<Types> = ({schema, title, required}) => {
   const items = schema.items as JSONSchema7;
+  const arrayOfProperty = ['maxItems', 'minItems', 'uniqueItems'];
 
   const DropdownContent = () => {
     if (items?.type === 'object' && items.properties) {
@@ -47,11 +44,11 @@ export const ArrayComponent: FC<Types> = ({
 
           {items.description && <Text color="var(--c-dark)">{items?.description}</Text>}
 
-          {schema.maxItems && <Property title="maxItems" value={schema.maxItems} />}
-
-          {schema.minItems && <Property title="minItems" value={schema.minItems} />}
-
-          {schema.uniqueItems && <Property title="uniqueItems" value="Yes" />}
+          {arrayOfProperty.map((item) => {
+            // @ts-ignore
+            const property = schema?.[item];
+            return property && <Property title={item} value={property} />;
+          })}
         </Flex>
 
         <DropdownContent />

@@ -8,38 +8,39 @@ import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
 import { Types } from '../../types';
 
-export const ObjectComponent: FC<Types> = ({
-  schema,
-  title,
-  required,
-}) => (
-  <Dropdown title={<PrimitiveNode schema={schema} title={title} required={required} />}>
-    <>
-      <Flex margin={{ bottom: 'regular' }}>
-        {schema.maxProperties && <Property title="maxProperties" value={schema.maxProperties} />}
+export const ObjectComponent: FC<Types> = ({schema, title, required}) => {
+  const arrayOfProperty = ['maxProperties', 'minProperties'];
+  return (
+    <Dropdown title={<PrimitiveNode schema={schema} title={title} required={required} />}>
+      <>
+        <Flex margin={{ bottom: 'regular' }}>
+          {arrayOfProperty.map((item) => {
+            // @ts-ignore
+            const property = schema?.[item];
+            return property && <Property title={item} value={property} />;
+          })}
+        </Flex>
 
-        {schema.minProperties && <Property title="minProperties" value={schema.minProperties} />}
-      </Flex>
+        {schema.properties &&
+          Object.entries(schema.properties).map(([key, value]) => (
+            <Wrapper
+              required={Array.isArray(schema?.required) && schema.required?.includes(key)}
+              key={key}
+              schema={value as JSONSchema7}
+              title={key}
+            />
+          ))}
 
-      {schema.properties &&
-        Object.entries(schema.properties).map((prop) => (
-          <Wrapper
-            required={Array.isArray(schema?.required) && schema.required?.includes(prop[0])}
-            key={prop[0]}
-            schema={prop[1] as JSONSchema7}
-            title={prop[0]}
-          />
-        ))}
-
-      {schema.patternProperties &&
-        Object.entries(schema.patternProperties).map((prop) => (
-          <Wrapper
-            required={Array.isArray(schema?.required) && schema.required?.includes(prop[0])}
-            key={prop[0]}
-            schema={prop[1] as JSONSchema7}
-            title={prop[0]}
-          />
-        ))}
-    </>
-  </Dropdown>
-);
+        {schema.patternProperties &&
+          Object.entries(schema.patternProperties).map(([key, value]) => (
+            <Wrapper
+              required={Array.isArray(schema?.required) && schema.required?.includes(key)}
+              key={key}
+              schema={value as JSONSchema7}
+              title={key}
+            />
+          ))}
+      </>
+    </Dropdown>
+  );
+}
