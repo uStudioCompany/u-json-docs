@@ -5,11 +5,11 @@
   },
   "extends": [
     "airbnb",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
   ],
   "plugins": ["@typescript-eslint", "import"],
   "parser": "@typescript-eslint/parser",
