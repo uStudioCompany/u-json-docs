@@ -17,12 +17,12 @@ export const ArrayComponent: FC<{ schema: JSONSchema7; title?: string; required?
     if (items?.type === 'object' && items.properties) {
       return (
         <>
-          {Object.entries(items?.properties).map((prop) => (
+          {Object.entries(items.properties).map(([key, value]) => (
             <Wrapper
-              key={prop[0]}
-              required={Array.isArray(items.required) && items.required?.includes(prop[0])}
-              schema={prop[1] as JSONSchema7}
-              title={prop[0]}
+              key={key}
+              required={Array.isArray(items.required) && items.required?.includes(key)}
+              schema={value as JSONSchema7}
+              title={key}
             />
           ))}
         </>
@@ -30,7 +30,7 @@ export const ArrayComponent: FC<{ schema: JSONSchema7; title?: string; required?
     }
 
     if (Array.isArray(items?.type)) {
-      return <Text> {items?.type.map((item) => JSON.stringify(item, null, 2)).join(' | ')}</Text>;
+      return <Text>{items.type.map((item) => JSON.stringify(item, null, 2)).join(' | ')}</Text>;
     }
 
     return <Text>{JSON.stringify(items?.type, null, 2)}</Text>;

@@ -10,10 +10,9 @@
     "dev": "parcel src/test/index.html --no-cache",
     "clean": "rimraf lib",
     "build:copy": "copyfiles README.md LICENSE package.json lib",
-    "build:components": "babel src --out-dir lib --extensions .ts,.tsx --copy-files",
-    "build:dts": "tsc -p tsconfig.json",
-    "build:clean": "rimraf lib/test",
-    "build": "npm-run-all clean -p build:components build:dts build:copy -s build:clean",
+    "build:components": "babel src --out-dir lib --extensions .ts,.tsx",
+    "build:dts": "tsc -p tsconfig.prod.json",
+    "build": "npm-run-all clean -p build:components build:dts build:copy -s",
     "release": "standard-version",
     "publication": "yarn build && yarn publish lib"
   },
