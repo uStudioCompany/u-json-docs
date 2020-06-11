@@ -8,18 +8,17 @@ import { JSONSchema7 } from 'json-schema';
 import { Wrapper } from '../wrapper';
 import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
-import { Node } from '../../types';
+import type { Node } from '../../types';
 
 export const ObjectComponent: FC<Node> = ({ schema, title, required }) => {
-  const objectProperties = ['maxProperties', 'minProperties'];
+  const objectProperties: (keyof JSONSchema7)[] = ['maxProperties', 'minProperties'];
   return (
     <Dropdown title={<PrimitiveNode schema={schema} title={title} required={required} />}>
       <>
         <Flex margin={{ bottom: 'regular' }}>
           {objectProperties.map((item) => {
-            // @ts-ignore
             const property = schema?.[item];
-            return property && <Property title={item} value={property} />;
+            return property && <Property title={item} value={JSON.stringify(property, null, 2)} />;
           })}
         </Flex>
 
