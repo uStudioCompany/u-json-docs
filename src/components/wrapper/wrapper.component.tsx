@@ -5,9 +5,9 @@ import Flex from 'ustudio-ui/components/Flex';
 import { ObjectComponent } from '../object';
 import { PrimitiveNode } from '../primitive-node';
 import { ArrayComponent } from '../array';
-import { Types } from '../../types/node';
+import type { Node } from '../../types';
 
-export const Wrapper: FC<Types> = ({
+export const Wrapper: FC<Node> = ({
   schema,
   title,
   required,
