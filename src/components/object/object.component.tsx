@@ -3,15 +3,17 @@ import React, { FC } from 'react';
 import Dropdown from 'ustudio-ui/components/Dropdown';
 import Flex from 'ustudio-ui/components/Flex';
 
-import { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from 'json-schema';
 
 import { Wrapper } from '../wrapper';
 import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
+
 import type { Node } from '../../types';
 
 export const ObjectComponent: FC<Node> = ({ schema, title, required }) => {
   const objectProperties: (keyof JSONSchema7)[] = ['maxProperties', 'minProperties'];
+
   return (
     <Dropdown title={<PrimitiveNode schema={schema} title={title} required={required} />}>
       <>

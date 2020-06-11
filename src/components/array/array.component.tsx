@@ -1,12 +1,15 @@
 import React, { FC } from 'react';
+
 import Dropdown from 'ustudio-ui/components/Dropdown';
 import Text from 'ustudio-ui/components/Text';
 import Flex from 'ustudio-ui/components/Flex';
+
 import { JSONSchema7 } from 'json-schema';
 
 import { Wrapper } from '../wrapper';
 import { PrimitiveNode } from '../primitive-node';
 import { Property } from '../property';
+
 import type { Node } from '../../types';
 
 export const ArrayComponent: FC<Node> = ({ schema, title, required }) => {
@@ -46,6 +49,7 @@ export const ArrayComponent: FC<Node> = ({ schema, title, required }) => {
 
           {arrayProperties.map((item) => {
             const property = schema?.[item];
+
             return property && <Property title={item} value={JSON.stringify(property, null, 2)} />;
           })}
         </Flex>

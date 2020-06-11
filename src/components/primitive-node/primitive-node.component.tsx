@@ -11,14 +11,23 @@ import type { Node } from '../../types';
 
 import { parseSchemaType } from './primitive-node.module';
 
-export const PrimitiveNode: FC<Node> = ({
-  schema,
-  title,
-  parent,
-  required,
-}) => {
-
-  const primitiveProperties: (keyof JSONSchema7)[] = ['const', 'default', 'examples', 'multipleOf', 'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength', 'pattern', 'format', 'readOnly', 'writeOnly' ];
+export const PrimitiveNode: FC<Node> = ({ schema, title, parent, required }) => {
+  const primitiveProperties: (keyof JSONSchema7)[] = [
+    'const',
+    'default',
+    'examples',
+    'multipleOf',
+    'maximum',
+    'exclusiveMaximum',
+    'minimum',
+    'exclusiveMinimum',
+    'maxLength',
+    'minLength',
+    'pattern',
+    'format',
+    'readOnly',
+    'writeOnly',
+  ];
 
   return (
     <Styled.Node padding={{ top: 'medium', bottom: 'medium' }} alignment={{ horizontal: 'space-between' }}>

@@ -4,7 +4,7 @@ import { ThemeProvider } from 'ustudio-ui/theme';
 
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 
-import { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from 'json-schema';
 
 import { Wrapper } from '../wrapper';
 import { JsonDocs } from './json-docs.types';
