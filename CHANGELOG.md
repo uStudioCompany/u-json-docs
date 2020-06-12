@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/uStudioCompany/u-json-docs/compare/v0.0.8...v0.0.9) (2020-06-12)
+
+
+### Features
+
+* Add error handling on schema parsing ([b1a42bf](https://github.com/uStudioCompany/u-json-docs/commit/b1a42bf5028139bca8c588790de46787fc17c21e))
+
+
+### Bug Fixes
+
+* Add correct exports and handling errors ([fc529d8](https://github.com/uStudioCompany/u-json-docs/commit/fc529d8ddfc590783956e090a39a736bc6dfe396))
+* Fix package description in README ([35389b4](https://github.com/uStudioCompany/u-json-docs/commit/35389b4c63d40ac93d62c1cf6d2c1c29ca1d1b7d))
+* Fix test folder in build ([4794b9e](https://github.com/uStudioCompany/u-json-docs/commit/4794b9ee802c0d0dbbb3b5840af418543527466f))
+
 ### 0.0.8 (2020-06-10)
 
 
