@@ -3,7 +3,14 @@
   "env": {
     "browser": true
   },
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/@typescript-eslint"],
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
   "plugins": ["@typescript-eslint", "import"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -16,7 +23,7 @@
     "react": {
       "version": "detect"
     },
-    "import/parsers": {
+    "import/parser": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     }
   },
