@@ -26,22 +26,12 @@ export const ObjectComponent: FC<Node> = ({ schema, title, required }) => {
 
         {schema.properties &&
           Object.entries(schema.properties).map(([key, value]) => (
-            <Wrapper
-              required={Array.isArray(schema?.required) && schema.required?.includes(key)}
-              key={key}
-              schema={value as JSONSchema7}
-              title={key}
-            />
+            <Wrapper required={schema?.required?.includes(key)} key={key} schema={value as JSONSchema7} title={key} />
           ))}
 
         {schema.patternProperties &&
           Object.entries(schema.patternProperties).map(([key, value]) => (
-            <Wrapper
-              required={Array.isArray(schema?.required) && schema.required?.includes(key)}
-              key={key}
-              schema={value as JSONSchema7}
-              title={key}
-            />
+            <Wrapper required={schema?.required?.includes(key)} key={key} schema={value as JSONSchema7} title={key} />
           ))}
       </>
     </Dropdown>

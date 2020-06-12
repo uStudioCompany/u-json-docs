@@ -23,7 +23,7 @@ export const ArrayComponent: FC<Node> = ({ schema, title, required }) => {
           {Object.entries(items.properties).map(([key, value]) => (
             <Wrapper
               key={key}
-              required={Array.isArray(items.required) && items.required?.includes(key)}
+              required={items?.required?.includes(key)}
               schema={value as JSONSchema7}
               title={key}
             />
@@ -40,7 +40,7 @@ export const ArrayComponent: FC<Node> = ({ schema, title, required }) => {
   };
 
   return (
-    <Dropdown title={<PrimitiveNode parent="array" schema={schema} required={required} title={title} />}>
+    <Dropdown title={<PrimitiveNode parent="array" schema={schema} required={required} title={title}/>}>
       <>
         <Flex direction="column" margin={{ left: 'regular', bottom: 'regular' }}>
           {items.title && <Text variant="h5">{items?.title}</Text>}
@@ -50,11 +50,11 @@ export const ArrayComponent: FC<Node> = ({ schema, title, required }) => {
           {arrayProperties.map((item) => {
             const property = schema?.[item];
 
-            return property && <Property title={item} value={JSON.stringify(property, null, 2)} />;
+            return property && <Property title={item} value={JSON.stringify(property, null, 2)}/>;
           })}
         </Flex>
 
-        <DropdownContent />
+        <DropdownContent/>
       </>
     </Dropdown>
   );
