@@ -20,7 +20,7 @@ export const ObjectComponent: FC<Node> = ({ schema, title, required }) => {
         <Flex margin={{ bottom: 'regular' }}>
           {objectProperties.map((item) => {
             const property = schema?.[item];
-            return property && <Property title={item} value={JSON.stringify(property, null, 2)} />;
+            return property && <Property key={item} title={item} value={JSON.stringify(property, null, 2)} />;
           })}
         </Flex>
 
