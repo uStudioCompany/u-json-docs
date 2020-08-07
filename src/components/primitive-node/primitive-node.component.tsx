@@ -42,7 +42,7 @@ export const PrimitiveNode: FC<Node> = ({ schema, title, parent, required }) => 
           )}
         </Styled.KeyName>
 
-        <Flex direction="column">
+        <Flex direction="column" alignment={{ vertical: 'center' }}>
           {schema.title && <Styled.SchemaTitle variant="small">{schema.title}</Styled.SchemaTitle>}
 
           {schema.description && <Text variant="small"> {schema.description}</Text>}

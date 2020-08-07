@@ -33,6 +33,10 @@ const Node = styled(Flex)`
 
 const KeyName = styled(Flex)`
   width: 300px;
+
+  margin-right: var(--i-regular);
+
+  word-break: break-word;
 `;
 
 const Type = styled(Flex)(
